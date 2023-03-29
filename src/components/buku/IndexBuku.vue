@@ -78,8 +78,8 @@ import Vue from 'vue';
     },
     methods: {
         userLoad(){
-            var page = "http://127.0.0.1:8000/api/getbuku";
-            axios.get(page).then(
+            // var page = "http://127.0.0.1:8000/api/getbuku" ;
+            axios.get('http://127.0.0.1:8000/api/getbuku' , {headers : {'Authorization' : 'Bearer' + this.$store.state.token}}).then(
                 ({data})=>{
                     console.log(data);
                     this.result = data;
@@ -88,8 +88,8 @@ import Vue from 'vue';
         },
         remove(buku){
             
-                var url = 'http://127.0.0.1:8000/api/deletebuku/'+ buku.id_buku;
-                axios.delete(url);
+                // var url = 'http://127.0.0.1:8000/api/deletebuku/'+ buku.id_buku;
+                axios.delete('http://127.0.0.1:8000/api/deletebuku/'+ buku.id_buku, {headers : {'Authorization' : 'Bearer' + this.$store.state.token}});
                 alert('sukses hapus buku')
                 setTimeout(() => {
                         window.location.reload()

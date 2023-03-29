@@ -53,8 +53,8 @@ export default {
             this.save_data();
         },
         save_data(){
-            axios.post('http://127.0.0.1:8000/api/createbuku', this.buku)
-            .then(
+            // axios.post('http://127.0.0.1:8000/api/createbuku', this.buku)
+            axios.post('http://127.0.0.1:8000/api/createbuku/', this.buku, {headers : {'Authorization' : 'Bearer' + this.$store.state.token}}).then(
                 ({data}) => {
                     alert("Berhasil Tambah Buku");
                     this.$router.push('/buku');

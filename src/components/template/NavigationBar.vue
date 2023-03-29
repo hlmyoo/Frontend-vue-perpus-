@@ -7,13 +7,31 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <button class="btn btn-sm btn-danger"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                <button @click="logout" class="btn btn-sm btn-danger"><i class="fas fa-sign-out-alt"></i> Logout</button>
             </li>
         </ul>
     </nav>
 </template>
 
 <script>
+import swal from 'sweetalert'
 export default {    
+    methods : {
+        logout(){
+            swal({
+                title: "Ingin logout?",
+                icon : "warning",
+                dangerMode : true,
+                buttons : true
+            }).then(
+                (res) => {
+                    if(res){
+                        this.$store.commit('clearToken')
+                        location.href='/login'
+                    }
+                }
+            )
+        }
+    }
 }
 </script>

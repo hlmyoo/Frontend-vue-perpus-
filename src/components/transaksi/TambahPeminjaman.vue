@@ -47,6 +47,8 @@
 <script>
 import Vue from 'vue';
 import axios from 'axios';
+import swal from 'sweetalert';
+
 Vue.use(axios);
 
 export default {
@@ -96,8 +98,11 @@ export default {
             axios.post('http://localhost:8000/api/createpeminjaman', this.peminjaman)
                 .then(
                     ({ data }) => {
-                       alert('sukses tambah peminjaman')
-                       
+                    //    alert('sukses tambah peminjaman')
+                       swal({
+                        title :"sukses",
+                        icon : "success"
+                       })
                         this.$router.push('/peminjaman')
                         this.peminjaman = data
                     }
